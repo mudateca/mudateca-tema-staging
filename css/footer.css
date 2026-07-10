@@ -1,0 +1,97 @@
+/* ==================================================
+   RODAPÉ (FOOTER) - MODULARIZADO
+   ================================================== */
+
+.muda-footer-wrapper {
+  width: 100%;
+  background-color: var(--cor-fundo-geral);
+  padding: 40px 20px;
+  box-sizing: border-box;
+  border-top: 1px solid var(--cor-borda);
+  font-family: var(--fonte-padrao);
+  color: var(--cor-texto-suave);
+}
+
+.muda-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.muda-footer-container a {
+  color: var(--cor-texto-suave);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.muda-footer-container a:hover {
+  color: var(--cor-laranja-primaria);
+}
+
+/* 1. Copyright */
+.muda-footer-copyright {
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 2. Menu de Políticas */
+.muda-footer-policies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.muda-footer-policies li {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3. Redes Sociais */
+.muda-footer-socials {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.muda-footer-socials svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+/* Responsividade */
+@media screen and (min-width: 750px) {
+  .muda-footer-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  .muda-footer-copyright {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .muda-footer-policies {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .muda-footer-socials {
+    justify-self: end;
+  }
+}

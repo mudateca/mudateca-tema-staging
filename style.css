@@ -4,3 +4,18 @@ Author: Janaina Campos
 Description: Tema customizado para Mudateca
 Version: 1.0
 */
+
+/* 1. Configurações de Variáveis */
+@import "css/variaveis.css";
+
+/* 2. Reset e Estilos Globais */
+@import "css/global.css";
+
+/* 3. Componentes de Layout */
+@import "css/header.css";
+@import "css/hero.css";
+@import "css/vitrines.css";
+@import "css/blog.css";
+@import "css/newsletter.css";
+@import "css/diferenciais.css";
+@import "css/footer.css";

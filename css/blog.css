@@ -1,0 +1,146 @@
+/* ==================================================
+   BLOG E ÚLTIMOS ARTIGOS - MODULARIZADO
+   ================================================== */
+
+.muda-blog-wrapper {
+    background-color: var(--cor-fundo-geral);
+    padding: 60px 20px;
+    font-family: var(--fonte-padrao);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.muda-blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.muda-blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.muda-blog-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--cor-preto-principal);
+    margin: 0;
+}
+
+.muda-blog-header a {
+    font-size: 14px;
+    color: var(--cor-link-azul);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* --- TRILHO E CARDS DO BLOG --- */
+.muda-blog-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+}
+
+.muda-blog-track::-webkit-scrollbar { display: none; }
+
+.muda-blog-card {
+    flex: 0 0 calc(33.333% - 14px);
+    background: var(--cor-branco);
+    border-radius: var(--radius-padrao);
+    box-shadow: var(--sombra-padrao);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.muda-blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-card);
+}
+
+.muda-blog-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.muda-blog-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.muda-blog-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cor-preto-principal);
+    margin: 0 0 10px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.muda-blog-excerpt {
+    font-size: 14px;
+    color: var(--cor-texto-suave);
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.muda-blog-readmore {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cor-laranja-primaria);
+    margin-top: auto;
+}
+
+/* --- NAVEGAÇÃO DO CARROSSEL --- */
+.muda-blog-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--cor-branco);
+    border: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: var(--sombra-padrao);
+    color: var(--cor-laranja-primaria);
+    transition: background-color 0.3s ease;
+}
+
+.muda-blog-nav:hover { background-color: #f7f7f7; }
+.muda-blog-nav.prev { left: -20px; display: none; }
+.muda-blog-nav.next { right: -20px; }
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .muda-blog-card { flex: 0 0 calc(50% - 10px); }
+}
+
+@media (max-width: 768px) {
+    .muda-blog-card { flex: 0 0 85%; }
+    .muda-blog-nav { display: none !important; }
+    .muda-blog-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}

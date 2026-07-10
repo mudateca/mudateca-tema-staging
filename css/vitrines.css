@@ -1,0 +1,104 @@
+/* ==================================================
+   VITRINES, CARROSSEIS E MOSAICOS - MODULARIZADO
+   ================================================== */
+
+/* --- ESTRUTURA GERAL DAS VITRINES --- */
+.mudateca-ofertas-section, 
+.vistos-section-wrapper, 
+.muda-mosaico-section {
+    background-color: var(--cor-fundo-geral);
+    padding: 40px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- GRADE DE PRODUTOS (VITRINE) --- */
+.mudateca-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+}
+
+.mudateca-produto {
+    background: var(--cor-branco);
+    padding: 16px;
+    border-radius: var(--radius-padrao);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--sombra-padrao);
+    transition: transform 0.2s ease;
+}
+
+.mudateca-produto:hover { transform: translateY(-2px); }
+
+.mudateca-produto-img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+/* --- CARROSSEIS (OFERTAS E MAIS VISTOS) --- */
+.muda-track, .vistos-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.muda-product, .vistos-product {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    min-width: 200px;
+}
+
+/* --- ESTILOS DE PREÇO (REUTILIZÁVEIS) --- */
+.muda-new-price, .vistos-new-price {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--cor-preto-principal);
+}
+
+.muda-discount-tag, .vistos-discount-tag {
+    color: var(--cor-sucesso);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* --- MOSAICO VINTAGE --- */
+.muda-mosaico-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 16px;
+}
+
+.muda-mosaico-card {
+    position: relative;
+    border-radius: var(--radius-grande);
+    overflow: hidden;
+    background-color: var(--cor-branco);
+}
+
+.muda-mosaico-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+    .mudateca-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .mudateca-grid { grid-template-columns: repeat(2, 1fr); }
+    .muda-mosaico-grid { grid-template-columns: repeat(2, 1fr); }
+}

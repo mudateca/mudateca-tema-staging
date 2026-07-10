@@ -1,12 +1,14 @@
 <?php
-// 1. Carrega o estilo principal do tema de forma profissional
-function mudateca_enqueue_styles() {
-    wp_enqueue_style( 'mudateca-style', get_stylesheet_uri() );
-}
-add_action( 'wp_enqueue_scripts', 'mudateca_enqueue_styles' );
+// functions.php - O orquestrador do tema
 
-// 2. Habilita suporte ao WooCommerce
-function mudateca_suporte_woocommerce() {
-    add_theme_support('woocommerce');
-}
-add_action('after_setup_theme', 'mudateca_suporte_woocommerce');
+// 1. Configurações básicas e menus
+require get_template_directory() . '/inc/setup.php';
+
+// 2. Custom Post Types e Banners
+require get_template_directory() . '/inc/cpt-banners.php';
+
+// 3. Funções de Carrosséis e Vitrines
+require get_template_directory() . '/inc/func-carrosseis.php';
+
+// 4. Seções Estáticas (Newsletter, Diferenciais)
+require get_template_directory() . '/inc/func-secoes.php';
