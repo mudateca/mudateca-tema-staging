@@ -5,17 +5,1905 @@ Description: Tema customizado para Mudateca
 Version: 1.0
 */
 
-/* 1. Configurações de Variáveis */
-@import "css/variaveis.css";
+/* Importando a fonte Inter do Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* 2. Reset e Estilos Globais */
-@import "css/global.css";
+    .mudateca-header {
+    background-color: #F2F2F2;
+    /* O primeiro valor (12px) é o topo, o segundo (20px) é laterais, o terceiro (8px) é embaixo */
+    padding: 12px 20px 12px 20px; 
+    font-family: 'Inter', sans-serif;
+    color: #111928;
+}
 
-/* 3. Componentes de Layout */
-@import "css/header.css";
-@import "css/hero.css";
-@import "css/vitrines.css";
-@import "css/blog.css";
-@import "css/newsletter.css";
-@import "css/diferenciais.css";
-@import "css/footer.css";
+    .mudateca-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 5px; /* Reduzi o gap entre a primeira e segunda linha */
+    }
+
+  .mudateca-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+
+  /* Logo */
+  .mudateca-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Barra de Busca Grande */
+  .mudateca-search {
+    flex: 1;
+    max-width: 600px;
+    background: #FFF8F1; /* Fundo off-white atualizado */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    /* Sombra shadow-sm do Tailwind */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+  }
+  .mudateca-search input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #828282; /* Cor atualizada para quando o usuário digita */
+  }
+
+  /* Define a cor cinza claro apenas para o texto de fundo (placeholder) */
+  .mudateca-search input::placeholder {
+    color: #9CA3AF; 
+  }
+
+  .mudateca-search button {
+    background: none;
+    border: none;
+    border-left: 1px solid #E5E7EB;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+
+  /* Menu e Links */
+  .mudateca-nav a, .mudateca-account a {
+    text-decoration: none;
+    color: #111928;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Cria a animação suave */
+  }
+
+  /* Efeito Hover (Mouse em cima) nos links normais */
+  .mudateca-nav a:hover, .mudateca-account a:not(.btn-entre):hover {
+    color: #FF8A4C; /* Destaca os links normais de laranja ao passar o mouse */
+  }
+  
+
+  /* Botão "Entre" Exclusivo */
+  .btn-entre {
+    background-color: #FF8A4C;
+    color: #F2F2F2 !important; /* Garante a cor clara do texto */
+    padding: 8px 20px; /* Preenchimento para dar volume de botão */
+    border-radius: 8px; /* Bordas de 8px conforme solicitado */
+    transition: background-color 0.3s ease !important;
+  }
+  
+  /* Efeito Hover no botão "Entre" */
+  .btn-entre:hover {
+    background-color: #e57635; /* Laranja um tom mais escuro para clique */
+    color: #ffffff !important;
+  }
+
+  /* Alinhamento do link com o ícone Chevron */
+  .nav-com-icone {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Espaço entre o texto e a seta */
+  }
+
+  /* Posição e cor original do Chevron */
+  .chevron-icone {
+    margin-top: 2px; /* Empurra o ícone levemente para baixo */
+    transition: stroke 0.3s ease;
+  }
+
+  /* Faz o Chevron mudar de cor no Hover */
+  .mudateca-nav a:hover .chevron-icone {
+    stroke: #FF8A4C;
+  }
+
+  .mudateca-nav {
+    display: flex;
+    gap: 20px;
+  }
+  .mudateca-account {
+    display: flex;
+    align-items: center; /* Alinha os botões verticalmente */
+    gap: 15px;
+  }
+
+  /* ==================================================
+     ESTILOS DOS BOTÕES DO HERO
+     ================================================== */
+  .hero-mudateca-pagination {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 999; 
+  }
+
+  .hero-mudateca-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #F2F2F2;
+    border: 2px solid #FF8A4C; 
+    height: 60px; 
+    width: 45px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    padding: 0;
+    color: #FF8A4C; 
+  }
+
+  .hero-mudateca-nav:hover {
+    background-color: #ffffff; 
+  }
+
+  .hero-mudateca-nav.prev {
+    left: 0;
+    border-left: none; 
+    border-radius: 0 100px 100px 0; 
+    padding-right: 4px; 
+  }
+
+  .hero-mudateca-nav.next {
+    right: 0;
+    border-right: none;
+    border-radius: 100px 0 0 100px; 
+    padding-left: 4px;
+  }
+
+  .hero-mudateca-dot {
+    width: 10px; 
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid #F2F2F2; 
+    background-color: transparent; 
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .hero-mudateca-dot.active {
+    background-color: #F2F2F2;
+  }
+
+  /* ==================================================
+     ESTILOS NATIVOS DO HERO
+     ================================================== */
+  .hero-wrapper {
+    width: 100%;
+    height: 80vh; /* Ocupa 80% da altura da tela. Você pode mudar para 600px se preferir */
+    position: relative;
+    background-color: #e5e5e5; /* Fundo de fallback */
+}
+
+  body:has(> #header-group > .header-section > #header-component) .hero-wrapper:first-child {
+    --hero-height-offset: var(--header-group-height, 0);
+  }
+
+  .hero {
+    position: relative;
+    min-height: calc(var(--hero-min-height) - var(--hero-height-offset));
+  }
+
+  .hero[data-shopify-visual-preview] {
+    --hero-min-height: 600px;
+    min-height: 600px;
+  }
+
+  .hero__container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.muda-hero-slide {
+    height: 100%;
+    width: 100%;
+    flex-shrink: 0;
+}
+  @media screen and (min-width: 750px) {
+    .hero__container {
+      align-items: var(--vertical-alignment);
+    }
+  }
+
+  .hero__content-wrapper.page-width {
+    grid-column: 2 / 3;
+  }
+
+  .hero__content-wrapper {
+    position: relative;
+    inset: 0;
+    z-index: var(--layer-flat);
+  }
+
+  .hero__content-wrapper .group-block-content {
+    position: relative;
+  }
+
+  /* ==================================================
+     MÁGICA DO CARROSSEL (1 BANNER POR VEZ)
+     ================================================== */
+  .hero__media-grid {
+    position: absolute;
+    inset: 0;
+    display: flex !important; /* Muda de grade para linha */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .hero__media-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero__media-grid > * {
+    flex: 0 0 100% !important; /* Cada banner ocupa exatamente 100% da largura */
+    width: 100% !important;
+    scroll-snap-align: center;
+  }
+
+  /* Restante do CSS original */
+  .hero--auto .hero__media {
+    aspect-ratio: var(--hero-media-aspect-ratio);
+  }
+
+  .hero--no-blocks-auto-height .hero__media {
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+  .hero--no-blocks-auto-height .hero__media-grid {
+    position: relative;
+  }
+
+  .hero__media-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+  }
+
+  .hero__media {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    overflow: hidden;
+    position: relative;
+    z-index: var(--layer-base);
+  }
+
+  .hero__media-wrapper--mobile {
+    display: none;
+  }
+
+  .hero__media-wrapper--desktop {
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero__media-wrapper--desktop {
+      display: none;
+    }
+    .hero__media-wrapper--mobile {
+      display: block;
+    }
+  }
+
+  .hero__link {
+    position: absolute;
+    inset: 0;
+    grid-column: 1 / -1;
+  }
+
+  .hero__media-grid,
+  .hero__content-wrapper {
+    pointer-events: none;
+  }
+  
+  .hero__media-grid :is(a, button, input, textarea, select, details, summary),
+  .hero__content-wrapper :is(a, button, input, textarea, select, details, summary) {
+    pointer-events: auto;
+  }
+
+  .hero__content-wrapper--design-mode * {
+    pointer-events: auto;
+  }
+
+  .hero[data-blur-shadow='true'] {
+    --blurred-reflection-filter-saturate: saturate(1.5);
+    --blurred-reflection-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+    --blurred-reflection-box-shadow: rgb(0 0 0 / 5%) 0 0 1rem;
+    --blurred-reflection-filter-blur: blur(20px);
+    --blurred-reflection-scale: scale(2, 1.25);
+    --blurred-reflection-padding-block-end: 60px;
+  }
+
+  .hero[data-blur-shadow='true'] .hero__container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: var(--blurred-reflection-box-shadow);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hero__blurred-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    mask-image: var(--blurred-reflection-mask-image);
+    filter: var(--blurred-reflection-filter-saturate);
+    pointer-events: none;
+    transform: translateY(50%);
+    overflow: hidden;
+  }
+
+  .hero__blurred-image--desktop {
+    display: none;
+  }
+  @media screen and (min-width: 750px) {
+    .hero__blurred-image--desktop {
+      display: block;
+    }
+    .hero__blurred-image--mobile {
+      display: none;
+    }
+  }
+
+  .hero__blurred-image--mobile {
+    display: block;
+  }
+
+  .hero__blurred-image img,
+  .hero__blurred-image svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: var(--blurred-reflection-filter-blur);
+    opacity: var(--blur-opacity);
+    transform: var(--blurred-reflection-scale);
+    padding-block-end: var(--blurred-reflection-padding-block-end);
+  }
+
+  .hero__blurred-image img:not(:only-child),
+  .hero__blurred-image svg:not(:only-child) {
+    width: 50%;
+  }
+
+  .hero__blurred-image img:not(:only-child):last-child,
+  .hero__blurred-image svg:not(:only-child):last-child {
+    right: 0;
+    left: auto;
+  }
+
+  /* Esconde as setas inicialmente no Desktop */
+  @media screen and (min-width: 750px) {
+    .hero-mudateca-nav {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .hero__container:hover .hero-mudateca-nav {
+      opacity: 1; /* Mostra as setas apenas no hover */
+    }
+  }
+
+  .mudateca-cards-wrapper {
+    position: relative;
+    z-index: 20;
+    /* Puxa a seção inteira 80px para cima do banner */
+    margin-top: -80px; 
+    padding-top: 80px; 
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .mudateca-cards-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Cobre a seção toda até o final */
+    height: 100%; 
+    /* O SEGREDO: A fumaça começa no topo e vira BRANCO SÓLIDO exatamente aos 80px (onde o banner acaba) */
+    background: linear-gradient(to bottom, 
+      rgba(245, 245, 245, 0) 0px, 
+      rgba(245, 245, 245, 0.7) 50px, 
+      #F5F5F5 80px, 
+      #F5F5F5 100%
+    );
+    z-index: 1; 
+    pointer-events: none;
+  }
+
+.mudateca-cards-container {
+    position: relative;
+    z-index: 5;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: -80px; /* Ajustado direto no CSS */
+    justify-content: center;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 10px;
+}
+
+  .mudateca-cards-container::-webkit-scrollbar {
+    display: none; 
+  }
+
+  /* O visual das caixinhas brancas */
+  .mudateca-card {
+    flex: 0 0 calc(16.666% - 14px); 
+    min-width: 160px; 
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mudateca-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111928;
+    margin: 0 0 16px 0;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .mudateca-card-image {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .mudateca-card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .mudateca-card-text {
+    font-size: 12px;
+    color: #4F4F4F;
+    margin: 0;
+    text-align: left;
+    line-height: 1.4;
+    flex-grow: 1; 
+  }
+
+  .mudateca-card-link {
+    font-size: 12px;
+    color: #FF8A4C; 
+    font-weight: 500;
+    margin-top: 8px;
+  }
+
+  /* Responsivo para Tablets e Celulares */
+  @media (max-width: 1024px) {
+    .mudateca-card {
+      flex: 0 0 calc(25% - 12px); 
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mudateca-card {
+      flex: 0 0 calc(40% - 12px); 
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mudateca-cards-container {
+        justify-content: flex-start; /* Garante que a rolagem funcione no celular */
+        padding-left: 20px; /* Dá um respiro lateral na rolagem */
+    }
+}
+
+/* --- RESET E CONTAINER PRINCIPAL --- */
+  .muda-section-wrapper {
+    background-color: #F5F5F5;
+    padding: 0px 20px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .muda-flex-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex !important; /* Força lado a lado */
+    flex-direction: row !important; /* Garante a linha horizontal */
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+  }
+
+  /* --- BLOCO ESQUERDO (OFERTA DO DIA) --- */
+  .muda-left-card {
+    flex: 0 0 280px !important; /* Largura fixa de 280px */
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* --- BLOCO DIREITO (CARROSSEL) --- */
+  .muda-right-box {
+    flex: 1 !important; /* Ocupa o restante do espaço */
+    min-width: 0 !important; /* SEGREDO: Impede que o carrossel quebre a linha */
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* --- HEADER DO CARROSSEL --- */
+  .muda-carousel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .muda-header-texts {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .muda-header-texts h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+
+  .muda-header-texts a {
+    font-size: 14px;
+    color: #3483FA;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* --- BOLINHAS LÁ NO TOPO --- */
+  .muda-dots-wrapper {
+    display: flex;
+    gap: 4px; 
+    align-items: center;
+  }
+
+  .muda-dot-item {
+    width: 6px; 
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid #FF8A4C; 
+    background-color: transparent; 
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  .muda-dot-item.active {
+    background-color: #FF8A4C; 
+  }
+
+  /* --- TRILHO DO CARROSSEL --- */
+  .muda-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    width: 100%;
+  }
+  .muda-track::-webkit-scrollbar { display: none; }
+
+  /* --- ESTILO DOS PRODUTOS --- */
+  .muda-product {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    min-width: 200px;
+  }
+
+  .muda-product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+
+  .muda-product-title {
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .muda-old-price { font-size: 12px; color: #999; text-decoration: line-through; margin-bottom: 4px; }
+  .muda-price-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .muda-new-price { font-size: 24px; font-weight: 400; color: #333; }
+  .muda-discount-tag { color: #00A650; font-size: 12px; font-weight: 600; }
+  .muda-free-shipping { color: #00A650; font-size: 12px; font-weight: 600; margin-top: 8px; }
+
+  /* --- SETAS --- */
+  .muda-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff; 
+    border: none; 
+    height: 60px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); 
+    color: #FF8A4C; 
+  }
+  .muda-arrow:hover { background-color: #f7f7f7; }
+  .muda-arrow.prev { left: 0; border-radius: 0 100px 100px 0; padding-right: 4px; display: none; }
+  .muda-arrow.next { right: 0; border-radius: 100px 0 0 100px; padding-left: 4px; }
+
+  /* --- CELULAR --- */
+  @media (max-width: 768px) {
+    .muda-flex-container {
+      flex-direction: column !important;
+    }
+    .muda-left-card { flex: auto !important; width: 100%; }
+    .muda-arrow { display: none !important; }
+    .muda-carousel-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+
+  /* Remove as bolinhas da lista e coloca os itens lado a lado */
+.mudateca-header ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.mudateca-nav-icones {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-item {
+    color: #FF8A4C; /* Cor Laranja */
+    stroke: #FF8A4C;
+    fill: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item:hover {
+    stroke: #FF8A4C;
+    opacity: 0.8;
+    transform: scale(1.1); /* Um leve efeito de zoom ao passar o mouse */
+}
+
+/* Garante que os ícones fiquem alinhados */
+.nav-item svg {
+    display: block;
+}
+
+.mudateca-account {
+    display: flex;
+    align-items: center; /* Isso alinha o texto com o ícone verticalmente */
+    gap: 15px;
+}
+
+/* Força o SVG a assumir a cor laranja e ignora estilos fixos */
+.nav-item svg, 
+.mudateca-account svg {
+    stroke: #FF8A4C !important;
+    fill: none !important;
+}
+
+/* Opcional: Se você quiser garantir que o hover funcione */
+.nav-item:hover svg {
+    stroke: #FF8A4C !important;
+}
+
+.banners-duplos-section {
+  background-color: #F5F5F5;
+  padding: 20px; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.banners-duplos-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.banner-item {
+  width: 547px;
+  height: 130px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.banner-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .banners-duplos-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .banner-item {
+    width: 100%;
+    max-width: 547px;
+  }
+}
+
+.mudateca-ofertas-section {
+    background-color: #F5F5F5;
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    box-sizing: border-box; 
+  }
+
+  .mudateca-ofertas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; 
+    display: block !important; /* <--- O segredo aqui: força os itens a empilharem de cima para baixo */
+  }
+
+  /* Título travado no topo e ocupando a linha toda */
+  .mudateca-header-titulo {
+    display: block;
+    width: 100%;
+    margin: 0 0 24px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    text-align: left;
+  }
+
+  /* GRADE DE PRODUTOS */
+  .mudateca-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+
+  .mudateca-produto {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .mudateca-produto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  }
+
+  .mudateca-produto-img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 12px;
+  }
+
+  .mudateca-produto-titulo {
+    font-size: 12px;
+    color: #333;
+    margin: 0 0 8px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .mudateca-preco-novo {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  /* RESPONSIVIDADE */
+  @media (max-width: 1024px) {
+    .mudateca-grid { 
+      grid-template-columns: repeat(3, 1fr); 
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mudateca-grid { 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 12px;
+    }
+    .mudateca-produto {
+      padding: 12px; 
+    }
+    .mudateca-header-titulo {
+      font-size: 20px;
+    }
+  }
+
+  /* Reduz o tamanho do preço antigo (riscado) */
+.mudateca-preco-novo del {
+    font-size: 0.75em; /* 75% do tamanho da fonte pai */
+    opacity: 0.6; /* Deixa um pouco mais transparente para ficar sutil */
+    margin-right: 6px;
+    font-weight: 400; /* Tira o negrito, se houver */
+}
+
+/* Garante que o preço novo continue com o tamanho normal e sem o sublinhado padrão do Woo */
+.mudateca-preco-novo ins {
+    text-decoration: none;
+    color: #FF8A4C; /* Traz o laranja da Mudateca para o preço final */
+}
+
+/* --- RESET E CONTAINER PRINCIPAL --- */
+  .vistos-section-wrapper {
+    background-color: #F5F5F5;
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .vistos-flex-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* --- BLOCO ÚNICO (CARROSSEL) --- */
+  .vistos-right-box {
+    width: 100%; 
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* --- HEADER DO CARROSSEL --- */
+  .vistos-carousel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .vistos-header-texts {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .vistos-header-texts h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+
+  .vistos-header-texts a {
+    font-size: 14px;
+    color: #3483FA;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* --- NOVAS BOLINHAS LÁ NO TOPO --- */
+  .vistos-dots-wrapper {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .vistos-dot-item {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid #FF8A4C;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  .vistos-dot-item.active {
+    background-color: #FF8A4C;
+  }
+
+  /* --- TRILHO DO CARROSSEL --- */
+  .vistos-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    width: 100%;
+  }
+  .vistos-track::-webkit-scrollbar { display: none; }
+
+  /* --- ESTILO DOS PRODUTOS --- */
+  .vistos-product {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    min-width: 200px;
+  }
+
+  .vistos-product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+
+  .vistos-product-title {
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .vistos-old-price { font-size: 12px; color: #999; text-decoration: line-through; margin-bottom: 4px; }
+  .vistos-price-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .vistos-new-price { font-size: 24px; font-weight: 400; color: #333; }
+  .vistos-discount-tag { color: #00A650; font-size: 12px; font-weight: 600; }
+  .vistos-free-shipping { color: #00A650; font-size: 12px; font-weight: 600; margin-top: 8px; }
+
+  /* --- SETAS --- */
+  .vistos-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: none;
+    height: 60px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: #FF8A4C;
+  }
+  .vistos-arrow:hover { background-color: #f7f7f7; }
+  .vistos-arrow.prev { left: 0; border-radius: 0 100px 100px 0; padding-right: 4px; display: none; }
+  .vistos-arrow.next { right: 0; border-radius: 100px 0 0 100px; padding-left: 4px; }
+
+  /* --- CELULAR --- */
+  @media (max-width: 768px) {
+    .vistos-arrow { display: none !important; }
+    .vistos-carousel-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+
+   /* --- RESET E CONTAINER PRINCIPAL --- */
+  .vistos-section-wrapper {
+    background-color: #F5F5F5;
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .vistos-flex-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* --- BLOCO ÚNICO (CARROSSEL) --- */
+  .vistos-right-box {
+    width: 100%; 
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* --- HEADER DO CARROSSEL --- */
+  .vistos-carousel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .vistos-header-texts {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .vistos-header-texts h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+
+  .vistos-header-texts a {
+    font-size: 14px;
+    color: #3483FA;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* --- NOVAS BOLINHAS LÁ NO TOPO --- */
+  .vistos-dots-wrapper {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .vistos-dot-item {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid #FF8A4C;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  .vistos-dot-item.active {
+    background-color: #FF8A4C;
+  }
+
+  /* --- TRILHO DO CARROSSEL --- */
+  .vistos-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    width: 100%;
+  }
+  .vistos-track::-webkit-scrollbar { display: none; }
+
+  /* --- ESTILO DOS PRODUTOS --- */
+  .vistos-product {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    min-width: 200px;
+  }
+
+  .vistos-product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+
+  .vistos-product-title {
+    font-size: 14px;
+    color: #333;
+    font-weight: 400;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .vistos-old-price { font-size: 12px; color: #999; text-decoration: line-through; margin-bottom: 4px; }
+  .vistos-price-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .vistos-new-price { font-size: 24px; font-weight: 400; color: #333; }
+  .vistos-discount-tag { color: #00A650; font-size: 12px; font-weight: 600; }
+  .vistos-free-shipping { color: #00A650; font-size: 12px; font-weight: 600; margin-top: 8px; }
+
+  /* --- SETAS --- */
+  .vistos-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: none;
+    height: 60px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: #FF8A4C;
+  }
+  .vistos-arrow:hover { background-color: #f7f7f7; }
+  .vistos-arrow.prev { left: 0; border-radius: 0 100px 100px 0; padding-right: 4px; display: none; }
+  .vistos-arrow.next { right: 0; border-radius: 100px 0 0 100px; padding-left: 4px; }
+
+  /* --- CELULAR --- */
+  @media (max-width: 768px) {
+    .vistos-arrow { display: none !important; }
+    .vistos-carousel-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+
+  .muda-hero-section {
+    width: 100%;
+    position: relative;
+    background-color: #F5F5F5 !important; /* Fundo alterado para cinza claro */
+    padding: 20px 0 40px 0; 
+  }
+
+  .muda-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .muda-hero-track {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; 
+    scroll-behavior: smooth;
+    border-radius: 12px; 
+  }
+
+  .muda-hero-track::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .muda-hero-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    position: relative;
+  }
+
+  .muda-hero-slide a {
+    display: block;
+    width: 100%;
+  }
+
+  .muda-hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* --- BOLINHAS (DOTS) --- */
+  .muda-hero-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .muda-hero-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid #FF914D; /* Laranja da Mudateca */
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+
+  .muda-hero-dot.active {
+    background-color: #FF914D; /* Laranja da Mudateca */
+  }
+
+  .muda-blog-wrapper {
+    background-color: #F5F5F5 !important; /* Fundo alterado para cinza claro */
+    padding: 60px 20px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .muda-blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .muda-blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .muda-blog-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+
+  .muda-blog-header a {
+    font-size: 14px;
+    color: #3483FA;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .muda-blog-carousel {
+    position: relative;
+    width: 100%;
+  }
+
+  .muda-blog-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    padding-bottom: 10px; /* Espaço para a sombra */
+  }
+  
+  .muda-blog-track::-webkit-scrollbar { 
+    display: none; 
+  }
+
+  .muda-blog-card {
+    flex: 0 0 calc(33.333% - 14px); /* 3 cards por tela no Desktop */
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .muda-blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  }
+
+  .muda-blog-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .muda-blog-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .muda-blog-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 10px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .muda-blog-excerpt {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  .muda-blog-readmore {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FF8A4C; /* Laranja Mudateca */
+    margin-top: auto;
+  }
+
+  /* Setas do Carrossel */
+  .muda-blog-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff; 
+    border: none; 
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; /* Setas redondas para o blog */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); 
+    color: #FF8A4C; 
+    transition: background-color 0.3s ease;
+  }
+
+  .muda-blog-nav:hover { background-color: #f7f7f7; }
+  .muda-blog-nav.prev { left: -20px; display: none; }
+  .muda-blog-nav.next { right: -20px; }
+
+  /* Responsividade */
+  @media (max-width: 1024px) {
+    .muda-blog-card { flex: 0 0 calc(50% - 10px); /* 2 cards no tablet */ }
+  }
+
+  @media (max-width: 768px) {
+    .muda-blog-card { flex: 0 0 85%; /* 1 card e um pedacinho no celular */ }
+    .muda-blog-nav { display: none !important; /* Esconde setas no mobile, usa o touch */ }
+    .muda-blog-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+
+  .muda-mosaico-section {
+    background-color: #F5F5F5 !important; /* Fundo alterado para cinza claro */
+    padding: 60px 20px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .muda-mosaico-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* --- CABEÇALHO --- */
+  .muda-mosaico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+  }
+
+  .muda-mosaico-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .muda-mosaico-titles h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+
+  .muda-mosaico-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+
+  .muda-mosaico-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FF914D; /* Laranja Mudateca */
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .muda-mosaico-link:hover {
+    opacity: 0.8;
+  }
+
+  /* --- GRID DO MOSAICO --- */
+  .muda-mosaico-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas iguais */
+    grid-auto-rows: 200px; /* Altura base para os cards pequenos */
+    gap: 16px;
+  }
+
+  /* Os dois primeiros produtos ocupam 2 linhas de altura */
+  .muda-mosaico-card:nth-child(1),
+  .muda-mosaico-card:nth-child(2) {
+    grid-row: span 2;
+  }
+
+  .muda-mosaico-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    background-color: #f5f5f5;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .muda-mosaico-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+  .muda-mosaico-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* <-- Troca de cover para contain */
+    display: block;
+    background-color: #ffffff; /* Fundo branco para preencher o espaço que sobrar */
+    padding: 16px; /* Adiciona um respiro como se fosse uma moldura */
+    box-sizing: border-box;
+}
+
+  /* --- ETIQUETA DE PREÇO (OVERLAY) --- */
+  .muda-mosaico-price-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .muda-mosaico-new-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FF914D; /* Laranja Mudateca */
+  }
+
+  .muda-mosaico-old-price {
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  /* --- RESPONSIVIDADE (CELULAR) --- */
+  @media (max-width: 768px) {
+    .muda-mosaico-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .muda-mosaico-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
+      grid-auto-rows: 180px;
+    }
+    /* No celular, todos ficam do mesmo tamanho para não quebrar a tela */
+    .muda-mosaico-card:nth-child(1),
+    .muda-mosaico-card:nth-child(2) {
+      grid-row: span 1; 
+    }
+  }
+
+  .muda-news-section {
+    background-color: #F5F5F5 !important;
+    padding: 60px 20px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .muda-news-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .muda-news-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  /* Textos da esquerda */
+  .muda-news-content {
+    flex: 1;
+  }
+
+  .muda-news-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 8px 0;
+  }
+
+  .muda-news-content p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Formulário da direita */
+  .muda-news-form-wrapper {
+    flex: 1;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .muda-input-group {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .muda-news-input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .muda-news-input:focus {
+    border-color: #FF914D;
+  }
+
+  .muda-news-btn {
+    background-color: #FF914D;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .muda-news-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  /* Mensagens de sucesso ou erro */
+  .muda-news-message {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .muda-news-success { color: #00A650; }
+  .muda-news-error { color: #E53935; }
+
+  /* Responsividade para Celular */
+  @media (max-width: 768px) {
+    .muda-news-box {
+      flex-direction: column;
+      text-align: center;
+      padding: 30px 20px;
+      gap: 24px;
+    }
+    .muda-input-group {
+      flex-direction: column;
+    }
+    .muda-news-btn {
+      width: 100%;
+    }
+  }
+
+  .muda-diferenciais-section {
+    background-color: #F5F5F5; /* Fundo alterado para #F5F5F5 */
+    padding: 60px 20px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #EAEAEA; 
+    border-bottom: 1px solid #EAEAEA;
+  }
+
+  .muda-diferenciais-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .muda-diferenciais-item {
+    flex: 1;
+    text-align: center;
+    padding: 0 40px;
+    border-right: 1px solid #EAEAEA; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .muda-diferenciais-item:last-child {
+    border-right: none;
+  }
+
+  .muda-diferenciais-icon {
+    height: 60px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .muda-diferenciais-icon img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .muda-icon-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff; /* Fundo branco para destacar no cinza */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+  }
+
+  .muda-diferenciais-item h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    margin: 0 0 12px 0;
+  }
+
+  .muda-diferenciais-item p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+  }
+
+  .muda-diferenciais-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: #FF914D; 
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .muda-diferenciais-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .muda-diferenciais-item {
+      padding: 0 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .muda-diferenciais-container {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .muda-diferenciais-item {
+      padding: 0;
+      border-right: none;
+      border-bottom: 1px solid #EAEAEA;
+      padding-bottom: 40px;
+      width: 100%;
+    }
+    .muda-diferenciais-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  /* ==================================================
+   RODAPÉ (FOOTER)
+   ================================================== */
+.muda-footer-wrapper {
+  width: 100%;
+  background-color: #F5F5F5;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  border-top: 1px solid #EAEAEA;
+  font-family: 'Inter', sans-serif;
+  color: #666;
+}
+
+.muda-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.muda-footer-container a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.muda-footer-container a:hover {
+  color: #FF914D; 
+}
+
+/* 1. Copyright */
+.muda-footer-copyright {
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 2. Menu de Políticas - Centralização Absoluta */
+.muda-footer-policies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; /* Centraliza verticalmente se houver quebra de linha */
+  gap: 16px;
+  list-style: none;
+  padding: 0 !important; /* Força o WordPress a zerar o recuo da lista */
+  margin: 0 !important;  /* Força a zerar margens extras */
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.muda-footer-policies li {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3. Redes Sociais */
+.muda-footer-socials {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.muda-footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.muda-footer-socials svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+@media screen and (min-width: 750px) {
+  .muda-footer-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  .muda-footer-copyright {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .muda-footer-policies {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .muda-footer-socials {
+    justify-self: end;
+  }
+}
